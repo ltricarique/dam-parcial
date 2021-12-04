@@ -8,6 +8,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.util.List;
+
+import ar.edu.utn.frsf.isi.dam.parcial.model.Usuario;
+import ar.edu.utn.frsf.isi.dam.parcial.repository.DamParcialRepository;
+
 public class MainActivity extends AppCompatActivity {
     private EditText editText;
     private ToggleButton toggleButton;
@@ -38,12 +43,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * ACLARACION IMPORTANTE: EL ACCESO AL REPOSITORIO DEBERIA HACERSE EN UN HILO SECUNDARIO Y NO EN EL HILO PRINCIPAL
+     */
     private void guardarDatos() {
-        Toast.makeText(this, "Datos guardados",
-                Toast.LENGTH_SHORT).show();
+        try {
+            Usuario usuario = new Usuario(editText.getText().toString());
+            DamParcialRepository.getInstance(this).guardarUsuario(usuario);
+            Toast.makeText(this, "Datos guardados",
+                    Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al guardar datos",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
+    /**
+     * ACLARACION IMPORTANTE: EL ACCESO AL REPOSITORIO DEBERIA HACERSE EN UN HILO SECUNDARIO Y NO EN EL HILO PRINCIPAL
+     */
     private void recuperarDatos() {
-
+        try {
+            List<Usuario> usuarios = DamParcialRepository.getInstance(this).obtenerUsuarios();
+            Toast.makeText(this, usuarios.toString(),
+                    Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al obtener datos",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
