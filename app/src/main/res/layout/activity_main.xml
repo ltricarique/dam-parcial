@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre" />
+
+    <EditText
+        android:id="@+id/editTextId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese su nombre" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOn="Activado"
+        android:textOff="Desactivado"
+        android:text="ToggleButton" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonGuardarId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar" />
+
+        <Button
+            android:id="@+id/buttonRecuperarId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recuperar" />
+
+    </LinearLayout>
+
+</LinearLayout>
